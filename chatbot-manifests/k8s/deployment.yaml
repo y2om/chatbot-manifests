@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: chatbot-app
-  namespace: chatbot-prod
 spec:
   replicas: 1
   selector:
@@ -15,7 +14,7 @@ spec:
     spec:
       containers:
         - name: chatbot-app
-          image: 192.168.1.18/chatbot/chatbot-app:v2
+          image: 192.168.1.18/chatbot/chatbot-app:latest
           ports:
             - containerPort: 5000
 
