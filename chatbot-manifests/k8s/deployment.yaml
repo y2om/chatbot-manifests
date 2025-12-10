@@ -4,7 +4,7 @@ metadata:
   name: chatbot-app
   namespace: chatbot-prod
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: chatbot-app
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: chatbot-app
-          image: 192.168.1.18/chatbot/chatbot-app:latest
+          image: 192.168.1.18/chatbot/chatbot-app:v2
           ports:
             - containerPort: 5000
 
