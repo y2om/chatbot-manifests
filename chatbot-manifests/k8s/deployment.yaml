@@ -2,8 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: chatbot-app
+  labels:
+    app: chatbot-app
 spec:
-  replicas: 1
+  # Pod의 복제본 수
+  replicas: 1 
   selector:
     matchLabels:
       app: chatbot-app
@@ -12,9 +15,15 @@ spec:
       labels:
         app: chatbot-app
     spec:
+      # --- 여기에 ImagePullSecret을 추가합니다. ---
+      # Pod가 Harbor에서 이미지를 가져올 때 사용할 Secret (regcred) 지정
+      imagePullSecrets:
+      - name: regcred
+      # -----------------------------------------------
       containers:
-        - name: chatbot-app
-          image: 192.168.1.18/chatbot/chatbot-app:latest
-          ports:
-            - containerPort: 5000
-
+      - name: chatbot-app
+        # Jenkins Pipeline에서 푸시한 최종 이미지 태그를 사용합니다.
+        # Jenkins가 이 값을 build-XX로 자동 업데이트합니다.
+        image: 192.168.1.18/library/chatbot-model:build-24 
+        ports:
+        - containerPort: 5000 # 챗봇 애플리케이션 포트
