@@ -6,12 +6,11 @@ metadata:
   labels:
     app: chatbot-app
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: chatbot-app
   ports:
     - port: 5000  # 컨테이너 포트와 동일하게 설정
       targetPort: 5000
-      nodePort: 30099 # 외부 접근 포트
       protocol: TCP
       name: http
