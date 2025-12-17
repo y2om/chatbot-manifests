@@ -11,6 +11,8 @@ spec:
     app: chatbot-app
   ports:
     - port: 5000  # 컨테이너 포트와 동일하게 설정
-      targetPort: 5000
+      targetPort: 80
+      nodePort: 32602
       protocol: TCP
       name: http
+    
