@@ -22,6 +22,6 @@ spec:
       containers:
       - name: chatbot-app
         # Jenkins Pipeline이 업데이트한 최종 이미지 태그
-        image: 192.168.1.18/library/chatbot-model:build-38
+        image: 192.168.1.18/library/chatbot-model:build-35
         ports:
         - containerPort: 5000 # 챗봇 애플리케이션 포트
